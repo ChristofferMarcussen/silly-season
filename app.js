@@ -53,12 +53,6 @@ wss.on('connection', function(ws) {
 
 function pushTo(ws) {
     return function (tweet) {
-     
-        if (tweet.place == null) {
-            console.log("no place");
-            return;
-        }
-        
         var tw = _.pick(tweet, 'id', 'text', 'geo', 'place', 'user', 'entities', 'lang');
         ws.send(JSON.stringify(tw), function(err) {
             if (err) console.log(err);

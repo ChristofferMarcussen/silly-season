@@ -6,6 +6,17 @@
    
 
 
+    function setupSocket() {
+    	var ws = new WebSocket('ws://localhost:9999');
+		var that = this;
+		console.log("setting up WebSocket", ws);
+	    ws.onmessage = function(ms) {
+       		var newTweet = JSON.parse(ms.data);
+            console.log("received tweet", newTweet.text);
+            walk(newTweet.text.toLowerCase().indexOf('real madrid') >= 0);
+	  }
+    }
+
 	function getTransformProperty(element) {
 	    var properties = [
 	        'transform',
@@ -27,43 +38,35 @@
 		sprite.style[property] = 'translateX(' + trans + 'px)';
 	}
 
-	function walk(e) {
-		var keyCode = e.keyCode;
-		if (keyCode === 39) {
-			key.right = true;
-		} else if (keyCode === 37) {
-			key.left = true;
-		}
-    if (key.right === true) {
-			trans += 10;
+	function walk(isRealMadrid) {	
+    if (isRealMadrid) {
+			trans += 20;
 			translate();
 			sprite.classList.remove('left');
 			sprite.classList.add('right');
 			sprite.classList.add('walk-right');
-		} else if (key.left === true) {
-			trans -= 10;
+		} 
+	else {
+			trans -= 20;
 			translate();
 			sprite.classList.remove('right');
 			sprite.classList.add('left');
 			sprite.classList.add('walk-left');
 		}
+	  setTimeout(function () {
+           stop(isRealMadrid);
+	    }, 250);
 	}
 
-	function stop(e) {
-		var keyCode = e.keyCode;
-		if (keyCode === 39) {
-			key.right = false;
-		} else if (keyCode === 37) {
-			key.left = false;
-		}
-		if (key.right === false) {
+	function stop(isRealMadrid) {
+
+		if (isRealMadrid) {
 			sprite.classList.remove('walk-right');
-		} if (key.left === false) {
+		} 
+		else {
 			sprite.classList.remove('walk-left');
 		}
 	}
-
-	document.addEventListener('keydown', walk, false);
-	document.addEventListener('keyup', stop, false);
+	setupSocket();
 
 })();
