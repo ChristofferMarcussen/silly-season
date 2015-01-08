@@ -17,3 +17,13 @@ Så i en annen terminal:
 node app.js
 Gå til http://localhost:9999/
 ```
+
+# Twitter.json
+```
+{
+    "access_token": "",
+    "access_token_secret": "",
+    "consumer_key": "",
+    "consumer_secret": ""
+}
+```
