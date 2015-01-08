@@ -27,3 +27,10 @@ Gå til http://localhost:9999/
     "consumer_secret": ""
 }
 ```
+
+# MongoDB
+```
+Last ned mongoDB!
+Lag en data folder på toppnivå i prosjektet.
+Kjør mongod --dbpath data for å starte opp databasen
+```
