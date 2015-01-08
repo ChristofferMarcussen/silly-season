@@ -36,10 +36,9 @@ var LOCATIONS = {
 };
 
 var wss = new WebSocketServer({ server: server });
-
 var stream = T.stream('statuses/filter', 
 {
-   track: 'charlie'
+   track: 'Ødegaard, Odegaard'
 })
 
 wss.on('connection', function(ws) {
