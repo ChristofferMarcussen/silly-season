@@ -1,3 +1,21 @@
+@font-face {
+	font-family: monkeyIsland;
+	src: url(fonts/MonkeyIsland-1991.ttf);
+}
+
+.odegaard {
+	height: 200px
+}
+
+.tweets {
+	font-family: monkeyIsland;
+	font-size: 18px;
+}
+
+.tweet {
+	padding-top: 2rem;
+}
+
 .real-madrid {
 	float: right;
 	height: 75px;
