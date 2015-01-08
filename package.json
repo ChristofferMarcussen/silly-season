@@ -11,7 +11,8 @@
     "react": "0.11.2",
     "twit": "^1.1.18",
     "ws": "^0.4.32",
-    "baconjs": "0.7.41"
+    "baconjs": "0.7.41",
+    "highcharts": "0.0.8"
   },
   "devDependencies": {
     "browserify": "^6.0.3",
