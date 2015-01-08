@@ -35,21 +35,12 @@ var LOCATIONS = {
     WORLD: '-180,-90,180,90'
 };
 
-var SPEED = {
-    SLOW: 0.01,
-    MEDIUM: 0.1,
-    FAST: 0.2,
-    INSANE: 0.4,
-    RUDUNCULOUS: 0.6,
-    MY_BROWSER_HATES_ME: 1.0
-};
-
 var wss = new WebSocketServer({ server: server });
 
-var stream = T.stream('statuses/filter', {
-    locations: LOCATIONS.WORLD
-   ,language: 'en,nb,nn,no'
-});
+var stream = T.stream('statuses/filter', 
+{
+   track: 'charlie'
+})
 
 wss.on('connection', function(ws) {
     var pushTweet = pushTo(ws);
@@ -63,11 +54,12 @@ wss.on('connection', function(ws) {
 
 function pushTo(ws) {
     return function (tweet) {
-        if (Math.random() > SPEED.MEDIUM) return;
-        if (tweet.coordinates == null) return;
-        if (tweet.place == null) return;
+     
+        if (tweet.place == null) {
+            console.log("no place");
+            return;
+        }
         
-
         var tw = _.pick(tweet, 'id', 'text', 'geo', 'place', 'user', 'entities', 'lang');
         ws.send(JSON.stringify(tw), function(err) {
             if (err) console.log(err);
