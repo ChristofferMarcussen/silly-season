@@ -15,7 +15,7 @@ var runSequence = require('run-sequence');
 
 var paths = {
     js: {
-        src: './js/app.jsx',
+        src: './js/walk.js',
         dest: 'bundle.js'
     },
     css: {
@@ -71,7 +71,7 @@ function browserifyTask(options) {
         var bundler = browserify({
             cache: {}, packageCache: {}, fullPaths: true,
             entries: [src],
-            extensions: ['.jsx'],
+            extensions: ['.js'],
             debug: true
         })
         .transform(reactify);
