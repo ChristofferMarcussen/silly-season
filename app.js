@@ -56,7 +56,6 @@ wss.on('connection', function(ws) {
 function saveAndPushTo(ws) {
     return function (tweet) {
         var tw = _.pick(tweet, 'id', 'text', 'geo', 'place', 'user', 'entities', 'lang');
-        insert(JSON.stringify(tw));
         ws.send(JSON.stringify(tw), function(err) {
             if (err) console.log(err);
         });
