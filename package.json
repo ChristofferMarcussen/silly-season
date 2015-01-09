@@ -9,8 +9,8 @@
     "lodash": "^2.4.1",
     "twit": "^1.1.18",
     "ws": "^0.4.32",
-    "highcharts": "0.0.8",
-    "mongodb": "^2.0"
+    "eventstore": "1.1.2",
+    "mongodb": "2.0"
   },
   "devDependencies": {
     "browserify": "^6.0.3",
