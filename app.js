@@ -107,7 +107,7 @@ function storeEvent(tweet) {
 
     es.getEventStream('streamId', function(err, stream) {      
         console.log("add event to db");               
-        stream.addEvent({ event:'add', team: team, date: new Date()} );
+        stream.addEvent({ event:'added', team: team, date: new Date()} );
         stream.commit();
     });
 
