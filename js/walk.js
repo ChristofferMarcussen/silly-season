@@ -1,3 +1,5 @@
+var $ = require("jquery");
+
 (function() {
 	var sprite = document.querySelector('.sprite'),
 		key = {left: false, right: false},
@@ -12,6 +14,7 @@
        		var newTweet = JSON.parse(ms.data);
             console.log("received tweet", newTweet.text);
             walk(newTweet.text.toLowerCase().indexOf('real madrid') >= 0);
+            addTweetToView(newTweet.text);
 	  }
     }
 
@@ -65,6 +68,20 @@
 			sprite.classList.remove('walk-left');
 		}
 	}
+
+	function addTweetToView(tweet) {
+		if($("#tweet1").text().length > 0 ) {
+			if($("#tweet2").text().length > 0) {
+				$("#tweet1").text($("#tweet2").text());
+				$("#tweet2").text(tweet);
+			} else {
+				$("#tweet2").text(tweet);
+			}
+		} else {
+			$("#tweet1").text(tweet);
+		}
+	}
+
 	setupSocket();
 
 })();
