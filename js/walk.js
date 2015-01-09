@@ -3,9 +3,7 @@
 		key = {left: false, right: false},
 		trans = 0,
 		property = getTransformProperty(sprite);
-   
-
-
+	
     function setupSocket() {
     	var ws = new WebSocket('ws://localhost:9999');
 		var that = this;
